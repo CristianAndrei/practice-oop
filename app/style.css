@@ -143,7 +143,11 @@ main {
     left: initial;
     right: 0;
 }
-
+.start-button{
+    display: flex;
+    width: 10%;
+    align-items: center;
+}
 
 
 /** FOOTER */

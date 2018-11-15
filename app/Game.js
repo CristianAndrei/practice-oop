@@ -10,7 +10,7 @@ class Game {
         if (this.turn > 1) {
             this.turn = 0;
         }
-
+        if(this.players[this.turn].getLife()<=0) window.alert(this.players[1-this.turn].getName() + " won");
         this.reRender();
     }
 
@@ -33,7 +33,7 @@ class Game {
             this.players.push(player);
             this.views.push(new HeroView(document.querySelector("main"), player, this.attack.bind(this), this.usePower.bind(this)));
 
-            if(this.players.length === 2) {
+            if (this.players.length === 2) {
                 this.startGame();
             }
         }
@@ -41,15 +41,14 @@ class Game {
 
     attack(weaponId) {
         let attackWeapon = this.players[this.turn].getWeapon(weaponId);
-
+        
         this.players.forEach((player, index) => {
             if (index !== this.turn) {
                 player.wasAttacked(attackWeapon);
             }
         });
-
         this.changeTurn();
-      
+
     }
 
     usePower(powerId) {
